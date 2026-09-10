@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Hashem — Portfolio</title>
+  <meta name="description" content="Portfolio of Muhammad Hashem — Mechanical Engineer, Cybersecurity Analyst, Quran & Arabic Educator" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+    :root {
+      --bg: #0a1628;
+      --surface: #101d36;
+      --surface-2: #162544;
+      --text: #f0f4fa;
+      --muted: #8ba3c7;
+      --accent: #2196f3;
+      --accent-glow: rgba(33, 150, 243, 0.18);
+      --border: rgba(139, 163, 199, 0.12);
+      --radius: 14px;
+      --max-width: 1120px;
+      --section-pad: 5.5rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #64b5f6;
+      text-decoration: underline;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Layout */
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--section-pad) 1.25rem;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(33, 150, 243, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(33, 150, 243, 0.05) 0%, transparent 40%);
+      padding: 6rem 1.25rem;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #0d47a1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 0 40px var(--accent-glow);
+      border: 3px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .hero .subtitle {
+      margin: 1rem 0 0;
+      font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .hero .arabic-title {
+      font-family: 'Tajawal', sans-serif;
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      font-weight: 700;
+      color: var(--accent);
+      margin-top: 0.35rem;
+      direction: rtl;
+    }
+
+    .hero .tagline {
+      margin: 1.5rem auto 0;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    /* Sections */
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      margin: 0 0 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      color: var(--text);
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* Engineering — primary visual weight */
+    #engineering {
+      background:
+        linear-gradient(180deg, var(--bg) 0%, var(--surface) 60%, var(--bg) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    #engineering .section-header h2 {
+      color: var(--accent);
+    }
+
+    /* Cybersecurity */
+    #cybersecurity {
+      background: var(--bg);
+    }
+
+    /* Education */
+    #education {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25), 0 0 24px var(--accent-glow);
+      border-color: rgba(33, 150, 243, 0.35);
+    }
+
+    .card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+
+    .card .tools {
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Lists */
+    ul.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    ul.clean li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Roles / positions */
+    .role-block {
+      background: var(--surface-2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .role-block h3 {
+      margin: 0 0 0.25rem;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .role-block .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Skills */
+    .skill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+    }
+
+    .skill-badge {
+      background: rgba(33, 150, 243, 0.1);
+      color: var(--accent);
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border: 1px solid rgba(33, 150, 243, 0.18);
+    }
+
+    .soft-badge {
+      background: rgba(139, 163, 199, 0.1);
+      color: var(--muted);
+      border-color: rgba(139, 163, 199, 0.18);
+    }
+
+    /* Languages */
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .lang-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem;
+    }
+
+    .lang-card h4 {
+      margin: 0 0 0.25rem;
+      color: var(--text);
+    }
+
+    .lang-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* Contact */
+    #contact {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(33, 150, 243, 0.06) 0%, transparent 50%),
+        var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      word-break: break-word;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(33, 150, 243, 0.35);
+    }
+
+    .contact-card .icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 0.1rem;
+    }
+
+    .contact-card a {
+      color: var(--text);
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .contact-card a:hover {
+      color: var(--accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.85rem 1.4rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      margin-top: 1.25rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(33, 150, 243, 0.3);
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
+
+      .card:hover,
+      .contact-card:hover,
+      .btn:hover {
+        transform: none;
+      }
+    }
+
+    /* Mobile nav */
+    @media (max-width: 600px) {
+      .nav-inner {
+        flex-direction: column;
+        gap: 0.6rem;
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-links {
+        gap: 0.9rem;
+        font-size: 0.85rem;
+      }
+
+      .section {
+        padding: 3.5rem 1rem;
+      }
+
+      .hero {
+        padding: 4rem 1rem;
+        min-height: auto;
+      }
+
+      .avatar {
+        width: 96px;
+        height: 96px;
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">MH</div>
+      <ul class="nav-links">
+        <li><a href="#engineering">Engineering</a></li>
+        <li><a href="#cybersecurity">Cybersecurity</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <div class="avatar" aria-label="Muhammad Hashem initials">MH</div>
+      <h1>Muhammad Hashem</h1>
+      <p class="subtitle">Mechanical Engineer</p>
+      <p class="arabic-title" dir="rtl">مهندس ميكانيكا</p>
+      <p class="tagline">"Engineering systems, securing networks, and building minds."</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Engineering -->
+    <section id="engineering" class="section reveal">
+      <div class="section-header">
+        <h2><span aria-hidden="true">&#x2699;</span> Mechanical &amp; Mechatronics Engineering</h2>
+        <p>Primary expertise spanning CAD, embedded systems, electromechanical design, and industrial automation.</p>
+      </div>
+
+      <div class="role-block">
+        <h3>B.Sc. Mechanical Engineering — Mechatronics Major</h3>
+        <p class="meta">Arab Academy for Science, Technology &amp; Maritime Transport, Alexandria — Sept 2015 – Jan 2020</p>
+        <p class="meta">GPA 3.03 (Very Good)</p>
+      </div>
+
+      <h3 style="margin-top:0; font-size:1.05rem; color:var(--text);">Skills</h3>
+      <div class="skill-grid" style="margin-bottom:2.25rem;">
+        <span class="skill-badge">CAD</span>
+        <span class="skill-badge">Drafting</span>
+        <span class="skill-badge">3D Design</span>
+        <span class="skill-badge">3D Rendering</span>
+        <span class="skill-badge">3D Animation</span>
+        <span class="skill-badge">SolidWorks</span>
+        <span class="skill-badge">AutoCAD</span>
+        <span class="skill-badge">Embedded Systems</span>
+        <span class="skill-badge">C Programming</span>
+        <span class="skill-badge">PLC</span>
+        <span class="skill-badge">Electromechanical Systems</span>
+        <span class="skill-badge">PCB Design</span>
+        <span class="skill-badge">Hydraulic &amp; Pneumatic Systems</span>
+        <span class="skill-badge">HVAC</span>
+        <span class="skill-badge">Maintenance &amp; Repair</span>
+      </div>
+
+      <h3 style="font-size:1.05rem; color:var(--text); margin-bottom:1rem;">Projects</h3>
+      <div class="cards">
+        <article class="card">
+          <h3>Hydraulic Reinforcement Steel Cutter</h3>
+          <p>Graduation project: a hydraulic-powered cutter for rebar and sheet metal.</p>
+          <p class="tools">Tools: Hydraulic unit, SolidWorks</p>
+        </article>
+        <article class="card">
+          <h3>Smart Home Automation System</h3>
+          <p>IoT control of lights, doors, water pump, and air conditioning.</p>
+          <p class="tools">Tools: Arduino Uno, Servo Motors, PIR/LDR Sensors, C Programming</p>
+        </article>
+        <article class="card">
+          <h3>Robotic Arm Manipulator</h3>
+          <p>Servo-powered arm with camera and joystick control.</p>
+          <p class="tools">Tools: ATmega328, 3D Printed parts, Camera module</p>
+        </article>
+        <article class="card">
+          <h3>Automated Filling &amp; Labelling Machine</h3>
+          <p>Industrial packaging line for liquids.</p>
+          <p class="tools">Tools: PLC, Hydraulic &amp; Pneumatic systems, 3-phase AC motor, Belt conveyor</p>
+        </article>
+      </div>
+
+      <h3 style="font-size:1.05rem; color:var(--text); margin:2rem 0 1rem;">Certifications</h3>
+      <ul class="clean">
+        <li>Introduction to Aeronautical Engineering — edX, Delft University of Technology</li>
+        <li>Aerial Robotics — Coursera, University of Pennsylvania</li>
+        <li>Advanced C Programming — LinkedIn Learning</li>
+        <li>Satellite Technology Level 1 &amp; 2 — Alexandria, August 2019</li>
+        <li>BMW Car Service &amp; Maintenance — BMW Collection, Alexandria, September 2019</li>
+      </ul>
+    </section>
+
+    <!-- Cybersecurity -->
+    <section id="cybersecurity" class="section reveal">
+      <div class="section-header">
+        <h2><span aria-hidden="true">&#x1F6E1;</span> Cybersecurity</h2>
+        <p>Threat intelligence and security operations experience protecting organizations from emerging cyber threats.</p>
+      </div>
+
+      <div class="role-block">
+        <h3>Threat Intelligence Analyst</h3>
+        <p class="meta">Vultara, Inc. — Troy, Michigan (Remote) — July 2024 – July 2026</p>
+        <ul class="clean">
+          <li>Analyzed cyber threat intelligence to identify emerging threats, IOCs, and adversary TTPs</li>
+          <li>Produced structured intelligence and security reports covering active threats and business impact</li>
+          <li>Conducted attack feasibility and threat analysis to assess exploitation likelihood</li>
+          <li>Supported security automation initiatives for threat data collection, enrichment, and analysis</li>
+          <li>Applied MITRE ATT&amp;CK framework to translate threat data into actionable findings</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:1.05rem; color:var(--text); margin-top:0; margin-bottom:1rem;">Skills</h3>
+      <div class="skill-grid" style="margin-bottom:2.25rem;">
+        <span class="skill-badge">Cyber Threat Intelligence (CTI)</span>
+        <span class="skill-badge">Threat Analysis</span>
+        <span class="skill-badge">Threat Hunting</span>
+        <span class="skill-badge">IOC Analysis</span>
+        <span class="skill-badge">TTP Analysis</span>
+        <span class="skill-badge">MITRE ATT&amp;CK</span>
+        <span class="skill-badge">SOC Monitoring</span>
+        <span class="skill-badge">Incident Response</span>
+        <span class="skill-badge">SIEM / Elastic Stack / Kibana</span>
+        <span class="skill-badge">Vulnerability Management</span>
+        <span class="skill-badge">Security Automation</span>
+        <span class="skill-badge">Linux</span>
+        <span class="skill-badge">Windows</span>
+        <span class="skill-badge">Network Security</span>
+        <span class="skill-badge">Penetration Testing</span>
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">Automotive Cybersecurity</span>
+        <span class="skill-badge">Embedded Systems Security</span>
+      </div>
+
+      <h3 style="font-size:1.05rem; color:var(--text); margin-bottom:1rem;">Certifications</h3>
+      <ul class="clean" style="margin-bottom:2rem;">
+        <li>(ISC)² Certified in Cybersecurity (CC) — May 2024</li>
+        <li>Google Cybersecurity Professional Certificate — November 2023</li>
+      </ul>
+
+      <h3 style="font-size:1.05rem; color:var(--text); margin-bottom:1rem;">Practical Labs</h3>
+      <div class="cards">
+        <article class="card">
+          <h3>SOC Monitoring &amp; Incident Response Lab</h3>
+          <p>Built using Elastic Stack (SIEM), Kibana, Kali Linux, and Mythic C2 framework.</p>
+        </article>
+        <article class="card">
+          <h3>Qualys Vulnerability Management Lab</h3>
+          <p>Full vulnerability lifecycle: scan, analyze, prioritize, remediate.</p>
+        </article>
+        <article class="card">
+          <h3>Web Application Security Testing Project</h3>
+          <p>Vulnerability scanning and manual testing with documented findings.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="section reveal">
+      <div class="section-header">
+        <h2><span aria-hidden="true">&#x1F4D6;</span> Quran &amp; Arabic Education</h2>
+        <p>5+ years teaching Quran recitation, Tajweed, Arabic, and Islamic studies to non-native speakers.</p>
+      </div>
+
+      <div class="role-block">
+        <h3>Quran &amp; Arabic Educator</h3>
+        <p class="meta">5+ years across multiple academies</p>
+        <ul class="clean">
+          <li><strong>Arabic 101 Academy</strong> — Oct 2025 – Present</li>
+          <li><strong>Mishkah Academy</strong> — Oct 2024 – May 2026</li>
+          <li><strong>TareequlJannah Institute</strong> — Oct 2021 – Jun 2024</li>
+          <li><strong>TayseerulQuran Institute</strong> — Apr 2021 – Nov 2021</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:1.05rem; color:var(--text); margin-top:0; margin-bottom:1rem;">Key Competencies</h3>
+      <div class="skill-grid" style="margin-bottom:2.25rem;">
+        <span class="skill-badge">Quran Recitation &amp; Tajweed</span>
+        <span class="skill-badge">Arabic for Non-Native Speakers</span>
+        <span class="skill-badge">Islamic Studies (Aqeedah, Seerah, Hadith)</span>
+        <span class="skill-badge">Teacher Mentoring</span>
+        <span class="skill-badge">Curriculum Planning</span>
+        <span class="skill-badge">Student Progress Monitoring</span>
+        <span class="skill-badge">Online Teaching (Zoom, Google Meet, MS Teams)</span>
+      </div>
+
+      <h3 style="font-size:1.05rem; color:var(--text); margin-bottom:1rem;">Curricula</h3>
+      <ul class="clean" style="margin-bottom:2rem;">
+        <li>Nour Al-Bayan</li>
+        <li>Al-Qaeda Al-Nourania</li>
+        <li>Fath Ar-Rahman</li>
+      </ul>
+
+      <div class="role-block">
+        <h3>Mastery &amp; Excellence Program</h3>
+        <p class="meta">Muslimito Academy — Oct 2024 — Score: 98% (Distinction)</p>
+      </div>
+
+      <a href="https://www.dropbox.com/scl/fo/rysp46fgee8igr1ce5nxb/AEWph5vh2R-VIu5DAYgXQE0?rlkey=5trjvazmx2hg70v5sb1e6a33l&st=n26ckd11&dl=0" target="_blank" rel="noopener" class="btn">
+        <span aria-hidden="true">&#x25B6;</span> Teaching Videos
+      </a>
+    </section>
+
+    <!-- Languages -->
+    <section class="section reveal" style="padding-top:1.5rem;">
+      <div class="section-header">
+        <h2><span aria-hidden="true">&#x1F310;</span> Languages</h2>
+      </div>
+      <div class="lang-grid">
+        <div class="lang-card">
+          <h4>Arabic</h4>
+          <p>Native</p>
+        </div>
+        <div class="lang-card">
+          <h4>English</h4>
+          <p>Advanced (C1 — Speaking, Reading, Writing, Listening)</p>
+        </div>
+        <div class="lang-card">
+          <h4>German</h4>
+          <p>Intermediate</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Soft Skills -->
+    <section class="section reveal" style="padding-top:1.5rem;">
+      <div class="section-header">
+        <h2><span aria-hidden="true">&#x2728;</span> Soft Skills</h2>
+      </div>
+      <div class="skill-grid">
+        <span class="skill-badge soft-badge">Problem-solving</span>
+        <span class="skill-badge soft-badge">Analytical Thinking</span>
+        <span class="skill-badge soft-badge">Leadership</span>
+        <span class="skill-badge soft-badge">Teamwork</span>
+        <span class="skill-badge soft-badge">Communication</span>
+        <span class="skill-badge soft-badge">Time Management</span>
+        <span class="skill-badge soft-badge">Critical Thinking</span>
+        <span class="skill-badge soft-badge">Patience</span>
+        <span class="skill-badge soft-badge">Conflict Resolution</span>
+        <span class="skill-badge soft-badge">Continuous Learning</span>
+        <span class="skill-badge soft-badge">Organization</span>
+      </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="section reveal" style="padding-top:1.5rem; padding-bottom:2rem;">
+      <div class="section-header">
+        <h2><span aria-hidden="true">&#x1F527;</span> Tools &amp; Platforms</h2>
+      </div>
+      <div class="skill-grid">
+        <span class="skill-badge soft-badge">Microsoft 365</span>
+        <span class="skill-badge soft-badge">MS Office</span>
+        <span class="skill-badge soft-badge">Outlook</span>
+        <span class="skill-badge soft-badge">Teams</span>
+        <span class="skill-badge soft-badge">SharePoint</span>
+        <span class="skill-badge soft-badge">OneDrive</span>
+        <span class="skill-badge soft-badge">Azure DevOps</span>
+        <span class="skill-badge soft-badge">Google Workspace</span>
+        <span class="skill-badge soft-badge">Zoom</span>
+        <span class="skill-badge soft-badge">Google Meet</span>
+        <span class="skill-badge soft-badge">Calendly</span>
+        <span class="skill-badge soft-badge">Cal.com</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section reveal">
+      <div class="section-header">
+        <h2><span aria-hidden="true">&#x1F4E9;</span> Contact &amp; Links</h2>
+        <p>Reach out directly or explore my work across engineering, cybersecurity, and education.</p>
+      </div>
+      <div class="contact-grid">
+        <a href="https://wa.me/201118749237" target="_blank" rel="noopener" class="contact-card">
+          <span class="icon" aria-hidden="true">&#x1F4AC;</span>
+          <div>
+            <div class="label">WhatsApp</div>
+            <div>+20 111 874 9237</div>
+          </div>
+        </a>
+        <a href="mailto:hashem.4h@gmail.com" class="contact-card">
+          <span class="icon" aria-hidden="true">&#x2709;</span>
+          <div>
+            <div class="label">Email</div>
+            <div>hashem.4h@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/muhammad-h-5328a61a9/" target="_blank" rel="noopener" class="contact-card">
+          <span class="icon" aria-hidden="true">&#x1F465;</span>
+          <div>
+            <div class="label">LinkedIn</div>
+            <div>Muhammad H. (Engineering)</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/hashemuh" target="_blank" rel="noopener" class="contact-card">
+          <span class="icon" aria-hidden="true">&#x1F6E1;</span>
+          <div>
+            <div class="label">LinkedIn</div>
+            <div>HashemUH (Cybersecurity)</div>
+          </div>
+        </a>
+        <a href="https://grabcad.com/muhammad.hashem-1" target="_blank" rel="noopener" class="contact-card">
+          <span class="icon" aria-hidden="true">&#x2699;</span>
+          <div>
+            <div class="label">GrabCAD</div>
+            <div>Muhammad Hashem</div>
+          </div>
+        </a>
+        <a href="https://www.dropbox.com/scl/fo/rysp46fgee8igr1ce5nxb/AEWph5vh2R-VIu5DAYgXQE0?rlkey=5trjvazmx2hg70v5sb1e6a33l&st=n26ckd11&dl=0" target="_blank" rel="noopener" class="contact-card">
+          <span class="icon" aria-hidden="true">&#x1F3A5;</span>
+          <div>
+            <div class="label">Teaching Videos</div>
+            <div>Dropbox</div>
+          </div>
+        </a>
+        <a href="https://drive.google.com/drive/folders/1litfSwUa88Jw18rn0ZD4Yh6xnSvoz3t2?usp=sharing" target="_blank" rel="noopener" class="contact-card">
+          <span class="icon" aria-hidden="true">&#x1F4C1;</span>
+          <div>
+            <div class="label">Certificates</div>
+            <div>Google Drive</div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Muhammad Hashem — Open to opportunities in Saudi Arabia
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
